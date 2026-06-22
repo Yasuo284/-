@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハワイ旅のしおり 2026</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Helvetica Neue',sans-serif;background:#f5f5f0;color:#1a1a1a;font-size:15px}
+.header{background:#1a5276;color:#fff;padding:1.5rem 1rem 1rem;text-align:center}
+.header .title{font-size:22px;font-weight:600;margin-bottom:4px}
+.header .sub{font-size:14px;opacity:0.85}
+.badge{display:inline-block;background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 14px;font-size:13px;margin-top:10px}
+
+input[name="tab"]{display:none}
+.tab-bar{display:flex;background:#fff;border-bottom:1px solid #e0e0e0;position:sticky;top:0;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,0.08)}
+.tab-bar label{flex:1;padding:10px 2px;font-size:11px;text-align:center;cursor:pointer;color:#888;border-bottom:2px solid transparent;display:block}
+#t1:checked ~ .tab-bar label[for="t1"],
+#t2:checked ~ .tab-bar label[for="t2"],
+#t3:checked ~ .tab-bar label[for="t3"],
+#t4:checked ~ .tab-bar label[for="t4"],
+#t5:checked ~ .tab-bar label[for="t5"]{color:#1a5276;border-bottom-color:#1a5276;font-weight:600}
+
+.tab-content{display:none;padding-bottom:2rem}
+#t1:checked ~ .tab-content.c1,
+#t2:checked ~ .tab-content.c2,
+#t3:checked ~ .tab-content.c3,
+#t4:checked ~ .tab-content.c4,
+#t5:checked ~ .tab-content.c5{display:block}
+
+.section{padding:0.75rem 1rem}
+.section-title{font-size:12px;font-weight:600;color:#888;letter-spacing:0.06em;margin-bottom:8px;margin-top:12px}
+.card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;margin-bottom:10px;overflow:hidden}
+.info-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-bottom:1px solid #f0f0f0}
+.info-row:last-child{border-bottom:none}
+.info-label{font-size:13px;color:#666}
+.info-val{font-size:13px;font-weight:500;text-align:right;max-width:58%}
+.day-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;margin-bottom:12px;overflow:hidden}
+.day-header{padding:11px 14px;border-bottom:1px solid #f0f0f0;display:flex;align-items:center;gap:8px;background:#fafafa}
+.day-badge{background:#1a5276;color:#fff;border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600}
+.day-label{font-size:14px;font-weight:600}
+.time-row{display:flex;gap:10px;padding:10px 14px;border-bottom:1px solid #f0f0f0;align-items:flex-start}
+.time-row:last-child{border-bottom:none}
+.time{font-size:12px;color:#999;min-width:44px;padding-top:2px}
+.time-content{font-size:13px;flex:1;line-height:1.6}
+.highlight{color:#1a5276;font-weight:600}
+.budget-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.budget-card{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:12px}
+.budget-label{font-size:11px;color:#888;margin-bottom:4px}
+.budget-val{font-size:18px;font-weight:600}
+.budget-sub{font-size:11px;color:#aaa;margin-top:2px}
+.uber-card{background:#fff;border:1px solid #e8e8e8;border-radius:12px;overflow:hidden;margin-bottom:10px}
+.uber-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-bottom:1px solid #f0f0f0}
+.uber-row:last-child{border-bottom:none}
+.uber-dest{font-size:13px;font-weight:600}
+.uber-addr{font-size:11px;color:#999;margin-top:2px;word-break:break-all}
+.uber-cost{font-size:13px;color:#666;margin-left:8px;white-space:nowrap}
+.tip-row{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #f0f0f0;font-size:13px}
+.tip-row:last-child{border-bottom:none}
+.tip-scene{color:#666}
+.tip-amount{font-weight:600}
+.eng-card{background:#fff;border:1px solid #e8e8e8;border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.eng-situation{font-size:11px;color:#999;margin-bottom:4px;font-weight:600;letter-spacing:0.05em}
+.eng-text{font-size:14px;color:#1a1a1a;line-height:1.6}
+.notice{background:#fffbea;border:1px solid #f0e0a0;border-radius:10px;padding:10px 12px;font-size:13px;color:#8a6900;margin-bottom:8px;line-height:1.7}
+.shop-row{display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #f0f0f0;font-size:13px}
+.shop-row:last-child{border-bottom:none}
+.shop-price{color:#666}
+.footer{text-align:center;padding:2rem;font-size:12px;color:#aaa}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">🌺 ハワイ銀婚式旅行</div>
+  <div class="sub">2026年 7月6日（日）〜 7月10日（木）</div>
+  <div class="badge">3泊5日 ／ 関空発 JAL</div>
+</div>
+
+<input type="radio" name="tab" id="t1" checked>
+<input type="radio" name="tab" id="t2">
+<input type="radio" name="tab" id="t3">
+<input type="radio" name="tab" id="t4">
+<input type="radio" name="tab" id="t5">
+
+<div class="tab-bar">
+  <label for="t1">🏠<br>基本</label>
+  <label for="t2">📅<br>日程</label>
+  <label for="t3">💰<br>予算</label>
+  <label for="t4">🚗<br>Uber</label>
+  <label for="t5">⭐<br>Tips</label>
+</div>
+
+<!-- 基本情報 -->
+<div class="tab-content c1">
+  <div class="section">
+    <div class="section-title">✈️ フライト</div>
+    <div class="card">
+      <div class="info-row"><span class="info-label">出発</span><span class="info-val">7/6（日）20:00 関空 JAL</span></div>
+      <div class="info-row"><span class="info-label">到着</span><span class="info-val">7/6（日）10:00 ホノルル</span></div>
+      <div class="info-row"><span class="info-label">帰国便</span><span class="info-val">7/9（水）11:50 HST ホノルル発</span></div>
+    </div>
+    <div class="section-title">🏨 ホテル</div>
+    <div class="card">
+      <div class="info-row"><span class="info-label">名前</span><span class="info-val">ヒルトン・ガーデン・イン ワイキキビーチ</span></div>
+      <div class="info-row"><span class="info-label">チェックイン</span><span class="info-val">7/6（日）12:00</span></div>
+      <div class="info-row"><span class="info-label">チェックアウト</span><span class="info-val">7/9（水）08:30</span></div>
+    </div>
+    <div class="section-title">🍽️ 予約済みレストラン</div>
+    <div class="card">
+      <div class="info-row"><span class="info-label">店名</span><span class="info-val">House Without A Key</span></div>
+      <div class="info-row"><span class="info-label">日時</span><span class="info-val">7/7（月）17:45</span></div>
+      <div class="info-row"><span class="info-label">席</span><span class="info-val">傘付き屋外席・2名</span></div>
+      <div class="info-row"><span class="info-label">場所</span><span class="info-val">ハレクラニホテル内</span></div>
+    </div>
+    <div class="section-title">⚠️ 注意事項</div>
+    <div class="notice">アウラニのプールは宿泊者専用のため利用不可。レストラン・ショップは非宿泊者でも入れます。</div>
+    <div class="notice">英語が不安な場合はGoogle翻訳アプリのカメラ機能でメニューを翻訳できます。</div>
+    <div class="notice">ばらまき土産の大量買いはスーパー（Target・ウォルマート）が安くておすすめ。</div>
+  </div>
+</div>
+
+<!-- 日程 -->
+<div class="tab-content c2">
+  <div class="section">
+    <div class="day-card">
+      <div class="day-header"><span class="day-badge">DAY 1</span><span class="day-label">7/6（日）到着・ゆったりday</span></div>
+      <div class="time-row"><span class="time">20:00</span><span class="time-content">関空 JAL出発（前日夜）</span></div>
+      <div class="time-row"><span class="time">10:00</span><span class="time-content">ホノルル到着</span></div>
+      <div class="time-row"><span class="time">12:00</span><span class="time-content">ヒルトンチェックイン</span></div>
+      <div class="time-row"><span class="time">13:00</span><span class="time-content">ランチ：<span class="highlight">むすびカフェ IYASUME</span><br><span style="font-size:12px;color:#888">ホテル徒歩圏・ハワイアンフード・軽め</span></span></div>
+      <div class="time-row"><span class="time">14:00</span><span class="time-content">ワイキキマーケットで部屋飲み用買い出し</span></div>
+      <div class="time-row"><span class="time">15:00</span><span class="time-content">ワイキキビーチ → <span class="highlight">マジック・アイランド</span>方向へ散歩<br><span style="font-size:12px;color:#888">アラモアナビーチ公園・夕焼けが綺麗・無料</span></span></div>
+      <div class="time-row"><span class="time">18:00</span><span class="time-content">夕食：丸亀製麺ワイキキ店</span></div>
+      <div class="time-row"><span class="time">20:00</span><span class="time-content">部屋飲み・就寝</span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header"><span class="day-badge">DAY 2</span><span class="day-label">7/7（月）説明会 → 特別ディナー</span></div>
+      <div class="time-row"><span class="time">09:00</span><span class="time-content">朝食：<span class="highlight">ALO Cafe Hawaii</span><br><span style="font-size:12px;color:#888">おしゃれカフェ・ホテル近く</span></span></div>
+      <div class="time-row"><span class="time">11:00</span><span class="time-content">ヒルトンバケーションパッケージ説明会</span></div>
+      <div class="time-row"><span class="time">13:00</span><span class="time-content">ランチ：<span class="highlight">スライス・オブ・ワイキキ</span><br><span style="font-size:12px;color:#888">ピザ・気軽・魚なし</span></span></div>
+      <div class="time-row"><span class="time">14:00</span><span class="time-content"><span class="highlight">ヘブンリー アイランド ライフスタイル</span>でショッピング<br>→ <span class="highlight">Target / ウォルマート</span>でばらまき土産まとめ買い</span></div>
+      <div class="time-row"><span class="time">17:30</span><span class="time-content"><span class="highlight">🌅 特別ディナー：House Without A Key</span><br><span style="font-size:12px;color:#888">ハレクラニホテル・17:45予約済・傘付き屋外席</span></span></div>
+      <div class="time-row"><span class="time">20:30</span><span class="time-content">Uberでホテルへ・部屋飲み</span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header"><span class="day-badge">DAY 3</span><span class="day-label">7/8（火）アウラニday 🏰</span></div>
+      <div class="time-row"><span class="time">09:00</span><span class="time-content">Uberでアウラニへ（約40〜50分・約$35）</span></div>
+      <div class="time-row"><span class="time">10:00</span><span class="time-content"><span class="highlight">アウラニ到着</span>・ショップ・雰囲気を満喫<br><span style="font-size:12px;color:#c0392b">⚡ 限定グッズは午前中に！売り切れ注意</span></span></div>
+      <div class="time-row"><span class="time">12:00</span><span class="time-content">ランチ：<span class="highlight">Ulu Café</span><br><span style="font-size:12px;color:#888">予約不要・非宿泊者OK・バーガー等</span></span></div>
+      <div class="time-row"><span class="time">14:00</span><span class="time-content">Ko Olinaラグーン周辺散策</span></div>
+      <div class="time-row"><span class="time">15:30</span><span class="time-content">Uberでワイキキへ</span></div>
+      <div class="time-row"><span class="time">17:00</span><span class="time-content">ワイキキマーケットで買い物</span></div>
+      <div class="time-row"><span class="time">19:00</span><span class="time-content">夕食：ハワイのマクドナルド体験</span></div>
+      <div class="time-row"><span class="time">20:00</span><span class="time-content">部屋飲みタイム</span></div>
+    </div>
+    <div class="day-card">
+      <div class="day-header"><span class="day-badge">DAY 4</span><span class="day-label">7/9（水）チェックアウト → 帰国</span></div>
+      <div class="time-row"><span class="time">07:00</span><span class="time-content">朝食・荷物まとめ</span></div>
+      <div class="time-row"><span class="time">08:30</span><span class="time-content">チェックアウト</span></div>
+      <div class="time-row"><span class="time">09:00</span><span class="time-content">Uberで空港へ（約20〜30分）</span></div>
+      <div class="time-row"><span class="time">09:30</span><span class="time-content">ホノルル空港到着・免税店など</span></div>
+      <div class="time-row"><span class="time">11:50</span><span class="time-content"><span class="highlight">✈️ JAL出発（HST）</span></span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 予算 -->
+<div class="tab-content c3">
+  <div class="section">
+    <div class="section-title">💰 現地予算（1ドル＝165円換算）</div>
+    <div class="budget-grid">
+      <div class="budget-card"><div class="budget-label">現地予算</div><div class="budget-val">20万円</div><div class="budget-sub">約$1,212</div></div>
+      <div class="budget-card"><div class="budget-label">固定費合計</div><div class="budget-val">約13万円</div><div class="budget-sub">約$790</div></div>
+    </div>
+    <div class="card">
+      <div class="info-row"><span class="info-label">特別ディナー</span><span class="info-val">約37,000円（$225）</span></div>
+      <div class="info-row"><span class="info-label">交通費（Uber）</span><span class="info-val">約30,000円（$180）</span></div>
+      <div class="info-row"><span class="info-label">食費（ディナー除く）</span><span class="info-val">約28,000円（$170）</span></div>
+      <div class="info-row"><span class="info-label">部屋飲み・お酒</span><span class="info-val">約17,000円（$100）</span></div>
+      <div class="info-row"><span class="info-label">チップ</span><span class="info-val">約11,000円（$65）</span></div>
+      <div class="info-row"><span class="info-label">予備費</span><span class="info-val">約8,000円（$50）</span></div>
+      <div class="info-row" style="background:#eaf4ff"><span class="info-label" style="font-weight:600">ショッピング（残り）</span><span class="info-val" style="font-weight:600;color:#1a5276">約69,000円（$421）</span></div>
+    </div>
+    <div class="section-title">🛍️ ショッピング内訳</div>
+    <div class="card">
+      <div class="shop-row"><span>ディズニー限定グッズ計</span><span class="shop-price">約25,000円</span></div>
+      <div class="shop-row"><span>スピリットジャージー（奥様）</span><span class="shop-price">約13,200円（$80）</span></div>
+      <div class="shop-row"><span>マグカップ・タンブラー</span><span class="shop-price">約4,950円（$30）</span></div>
+      <div class="shop-row"><span>カチューシャ・小物</span><span class="shop-price">約3,300円（$20）</span></div>
+      <div class="shop-row"><span>ぬいぐるみ・キーチェーン</span><span class="shop-price">約4,125円（$25）</span></div>
+      <div class="shop-row" style="background:#f9f9f9"><span>ばらまき土産計</span><span class="shop-price">約16,500円</span></div>
+      <div class="shop-row"><span>マカデミアナッツ</span><span class="shop-price">約4,950円（$30）</span></div>
+      <div class="shop-row"><span>チョコ・クッキー系</span><span class="shop-price">約7,260円（$44）</span></div>
+      <div class="shop-row"><span>コナコーヒー</span><span class="shop-price">約3,300円（$20）</span></div>
+      <div class="shop-row" style="background:#eaf4ff"><span style="font-weight:600">予備・気に入ったもの</span><span class="shop-price" style="font-weight:600">約27,000円</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Uber -->
+<div class="tab-content c4">
+  <div class="section">
+    <div class="section-title">📍 よく使う行き先（コピペ用）</div>
+    <div class="notice">アドレスを長押し → コピー → Uberの検索欄にペースト</div>
+    <div class="uber-card">
+      <div class="uber-row"><div><div class="uber-dest">🏰 アウラニ</div><div class="uber-addr">92 Aliinui Dr, Kapolei, HI 96707</div></div><div class="uber-cost">約$35</div></div>
+      <div class="uber-row"><div><div class="uber-dest">🏨 ホテル（ヒルトン）</div><div class="uber-addr">2330 Kuhio Ave, Honolulu, HI 96815</div></div><div class="uber-cost">—</div></div>
+      <div class="uber-row"><div><div class="uber-dest">✈️ ホノルル空港</div><div class="uber-addr">300 Rodgers Blvd, Honolulu, HI 96819</div></div><div class="uber-cost">約$30</div></div>
+      <div class="uber-row"><div><div class="uber-dest">🛍️ アラモアナセンター</div><div class="uber-addr">1450 Ala Moana Blvd, Honolulu, HI 96814</div></div><div class="uber-cost">約$10</div></div>
+      <div class="uber-row"><div><div class="uber-dest">🍽️ ハレクラニホテル</div><div class="uber-addr">2199 Kalia Rd, Honolulu, HI 96815</div></div><div class="uber-cost">約$5</div></div>
+    </div>
+    <div class="section-title">🚗 乗り方（4ステップ）</div>
+    <div class="card">
+      <div class="info-row"><span class="info-label">① 目的地入力</span><span class="info-val">上のアドレスをコピペ</span></div>
+      <div class="info-row"><span class="info-label">② 車種選択</span><span class="info-val">UberX（一番安い）</span></div>
+      <div class="info-row"><span class="info-label">③ 乗車中</span><span class="info-val">黙ってOK・英語不要</span></div>
+      <div class="info-row"><span class="info-label">④ チップ</span><span class="info-val">降車後アプリで10〜15%</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Tips -->
+<div class="tab-content c5">
+  <div class="section">
+    <div class="section-title">💵 チップ目安</div>
+    <div class="card">
+      <div class="tip-row"><span class="tip-scene">レストラン（着席）</span><span class="tip-amount">合計の18〜20%</span></div>
+      <div class="tip-row"><span class="tip-scene">カフェ・カウンター</span><span class="tip-amount">$1〜2（任意）</span></div>
+      <div class="tip-row"><span class="tip-scene">Uber</span><span class="tip-amount">10〜15%（アプリ内）</span></div>
+      <div class="tip-row"><span class="tip-scene">ベッドメイク（1泊）</span><span class="tip-amount">$1〜2 枕元に現金</span></div>
+      <div class="tip-row"><span class="tip-scene">ベルボーイ（荷物1個）</span><span class="tip-amount">$1〜2</span></div>
+    </div>
+    <div class="notice">レシートの「Tip:」欄に手書きで金額を書く。合計×0.2（20%）が目安。$1札を数枚用意しておくと便利。</div>
+    <div class="section-title">💬 使える英語フレーズ</div>
+    <div class="eng-card"><div class="eng-situation">注文するとき</div><div class="eng-text">"This one, please."（指差しでOK）</div></div>
+    <div class="eng-card"><div class="eng-situation">お会計</div><div class="eng-text">"Check, please."</div></div>
+    <div class="eng-card"><div class="eng-situation">ありがとう</div><div class="eng-text">"Thank you so much!"</div></div>
+    <div class="eng-card"><div class="eng-situation">写真を撮ってもらうとき</div><div class="eng-text">"Could you take a picture for us?"</div></div>
+    <div class="eng-card"><div class="eng-situation">場所がわからないとき</div><div class="eng-text">"Where is ___?"（場所名を言うだけ）</div></div>
+    <div class="section-title">📞 緊急連絡先</div>
+    <div class="card">
+      <div class="tip-row"><span class="tip-scene">救急・警察</span><span class="tip-amount">📞 911</span></div>
+      <div class="tip-row"><span class="tip-scene">アウラニ ダイニング予約</span><span class="tip-amount">+1 (808) 674-6200</span></div>
+      <div class="tip-row"><span class="tip-scene">在ホノルル日本総領事館</span><span class="tip-amount">+1 (808) 543-3111</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">🌺 ハワイ銀婚式旅行 2026 ／ 素敵な旅を！</div>
+
+</body>
+</html>
